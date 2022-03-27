@@ -1,0 +1,48 @@
+{
+  "name": "projetoagenda",
+  "version": "1.0.0",
+  "main": "exportHTML.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js --ignore public --ignore frontend",
+    "dev": "webpack -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "core-js": "^2.6.12",
+    "core.js": "^0.4.2",
+    "css-loader": "^6.7.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express-session": "^1.17.2",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.2.7",
+    "regenerator-runtime": "^0.13.9",
+    "stable": "^0.1.8",
+    "style-loader": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaqueMansur/AULA-14-NODE-SERVIDOR-LIGADO-MONGODB.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IsaqueMansur/AULA-14-NODE-SERVIDOR-LIGADO-MONGODB/issues"
+  },
+  "homepage": "https://github.com/IsaqueMansur/AULA-14-NODE-SERVIDOR-LIGADO-MONGODB#readme",
+  "description": "Server Node com express, webpack, routes, middlewares e banco mongo"
+}
