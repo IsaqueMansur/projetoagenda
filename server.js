@@ -19,7 +19,7 @@ mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifie
 
 const {middleware, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware.js');
 
-app.use(helmet());
+/* app.use(helmet()); */
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
@@ -47,12 +47,10 @@ app.use(csrf());
 app.use(middleware);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);
-app.use(routes)
-
+app.use(routes);
 
 app.on('pronto', () => {
     app.listen(3000, () => {
         console.log("servidor on http://localhost:3000")
     });
 })
-
