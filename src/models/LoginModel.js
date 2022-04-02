@@ -11,6 +11,7 @@ class Login {
         this.body = body;
         this.errors = [];
         this.user = null;
+        
     }
 
     async register() {
