@@ -14,6 +14,23 @@ class Login {
         this.user = null;   
     }
 
+    async login() {
+        this.valida(true);
+        if (this.errors.length > 0) return;
+        this.user = await LoginModel.findOne({email: this.body.email});
+
+        if (!this.user) {
+            this.errors.push('Usuário não encontrado. Cadastre-se');
+            return
+        }
+
+        if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
+            this.errors.push('Senha incorreta.');
+            this.user = null;
+            return
+        };
+    }
+
     async register() {
         this.valida();
 
@@ -24,25 +41,22 @@ class Login {
         const salt = bcryptjs.genSaltSync();
         this.body.password = bcryptjs.hashSync(this.body.password, salt);
 
-        try {
-            this.user = await LoginModel.create(this.body);
-        }
-        catch(e) {
-            console.log(e);
-            return e;
-        }
+        this.user = await LoginModel.create(this.body);
     }
 
     async userExists() {
-        const user = await LoginModel.findOne({email: this.body.email});
-        if (user) this.errors.push('Usuário já existe');
+        this.user = await LoginModel.findOne({email: this.body.email});
+        if (this.user) this.errors.push('Usuário já existe.');
     }
 
-    valida() {
-
-        if (!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
+    valida(login) {
+        if (!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido.');
         if (this.body.password.length < 2 || this.body.password.length > 49 ) {
-            this.errors.push('Senha inválida (a senha deverá ter entre 3 e 50 caracteres)');
+            if (login) {
+                this.errors.push('Senha incorreta, a sua senha possui entre 3 e 50 caracteres.');
+                return
+            }
+            this.errors.push('Senha inválida (a senha deverá ter entre 3 e 50 caracteres.');
         }
     }
 
