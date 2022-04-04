@@ -1,7 +1,7 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (req, res) => {
-    console.log(req.session.user);
+    /* console.log(req.session.user); */ // REQUISIÇÃO ENVIADA PELO USUARIO
     if (req.session.user) return res.render('login-logado');
     res.render('login');
     return
