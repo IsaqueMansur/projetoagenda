@@ -5,7 +5,7 @@ const HomeSchema = new mongoose.Schema({
     descricao: Number
 });
 
-const HomeModel = mongoose.model('RNCS', HomeSchema);
+const HomeModel = mongoose.model('Home', HomeSchema);
 
 class Home {
 
