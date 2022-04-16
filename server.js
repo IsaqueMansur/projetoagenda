@@ -10,7 +10,11 @@ const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
-mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.CONNECTIONSTRING, 
+    { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+})
 .then(() => {
     console.log("Conectei a base de dados");
     app.emit('pronto');
